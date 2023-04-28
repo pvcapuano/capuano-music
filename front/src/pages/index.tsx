@@ -13,7 +13,7 @@ interface Instrumento {
 export default function Home() {
   const [instrumentos, setInstrumentos] = useState<Instrumento[]>([]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     async function fetchInstrumentos() {
       const response = await fetch("http://localhost:1337/api/instrumentos");
       const data = await response.json();
@@ -21,7 +21,7 @@ export default function Home() {
       setInstrumentos(data.data);
     }
     fetchInstrumentos();
-  }, []);
+  }, []); */
 
   return (
     <div>
