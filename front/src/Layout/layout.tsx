@@ -2,14 +2,14 @@ import Navbar from "@/components/Navbar";
 import { ReactNode } from "react";
 
 interface LayoutProps {
-  children?: JSX.Element;
+  children?: ReactNode;
 }
 
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       <Navbar />
-      <main>{children}</main>
+      <main className="mt-20">{children}</main>
     </>
   );
 };

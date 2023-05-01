@@ -1,4 +1,4 @@
-import GlobalLayout from "@/Layout/layout";
+import Layout from "@/Layout/layout";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import type { ReactElement, ReactNode } from "react";
@@ -13,10 +13,9 @@ type AppPropsWithLayout = AppProps & {
 };
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout = Component.getLayout ?? ((page) => page);
   return (
-    <GlobalLayout>
+    <Layout>
       <Component {...pageProps} />
-    </GlobalLayout>
+    </Layout>
   );
 }
