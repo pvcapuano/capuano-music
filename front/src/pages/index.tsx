@@ -1,19 +1,24 @@
+import { NextPage } from "next";
 import { useEffect, useState } from "react";
 
 interface Instrumento {
   id: number;
-  title: string;
-  price: number;
-  model: string;
-  category: string;
-  photo?: File;
-  brand: string;
+
+  attributes: {
+    title: string;
+    description: string;
+    price: number;
+    category: string;
+    model: string;
+    brand: string;
+    photo?: File;
+  };
 }
 
-export default function Home() {
+const Home: NextPage = () => {
   const [instrumentos, setInstrumentos] = useState<Instrumento[]>([]);
 
-  /* useEffect(() => {
+  useEffect(() => {
     async function fetchInstrumentos() {
       const response = await fetch("http://localhost:1337/api/instrumentos");
       const data = await response.json();
@@ -21,7 +26,7 @@ export default function Home() {
       setInstrumentos(data.data);
     }
     fetchInstrumentos();
-  }, []); */
+  }, []);
 
   return (
     <div>
@@ -38,4 +43,6 @@ export default function Home() {
       ))}
     </div>
   );
-}
+};
+
+export default Home;
