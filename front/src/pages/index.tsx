@@ -1,3 +1,4 @@
+import Banner from "@/components/Banner";
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
 
@@ -18,7 +19,7 @@ interface Instrumento {
 const Home: NextPage = () => {
   const [instrumentos, setInstrumentos] = useState<Instrumento[]>([]);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     async function fetchInstrumentos() {
       const response = await fetch("http://localhost:1337/api/instrumentos");
       const data = await response.json();
@@ -26,10 +27,11 @@ const Home: NextPage = () => {
       setInstrumentos(data.data);
     }
     fetchInstrumentos();
-  }, []);
+  }, []); */
 
   return (
     <div>
+      <Banner />
       <h1>Instrumentos</h1>
 
       {instrumentos.map((instrumento) => (
