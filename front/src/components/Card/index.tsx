@@ -26,16 +26,18 @@ const Card = ({
   product: { name, slug, details, price, brand, image },
 }: CardProps) => {
   return (
-    <div>
+    <>
       <Link href={`/product/${slug.current}`}>
-        <div>
-          <img src={urlFor(image && image[0])} width={250} height={250} />
-          <p>{name}</p>
-          <p>{details}</p>
-          <p>R${price}</p>
+        <div className="border-1 rounded-md bg-gray-100 shadow-xl w-52">
+          <img src={urlFor(image[0])} width={250} height={250} />
+          <div className="p-2">
+            <h1 className=" text-md my-2">{name}</h1>
+            <p className="font-bold text-sm text-amber-500">R$ {price}</p>
+            <p className="text-sm mb-2">Em até 12x sem juros</p>
+          </div>
         </div>
       </Link>
-    </div>
+    </>
   );
 };
 
