@@ -28,12 +28,15 @@ const Card = ({
   return (
     <>
       <Link href={`/product/${slug.current}`}>
-        <div className="border-1 rounded-md bg-gray-100 shadow-xl w-52">
-          <img src={urlFor(image[0])} width={250} height={250} />
-          <div className="p-2">
+        <div className="flex flex-col justify-around border-1 rounded-lg bg-gray-100 shadow-2xl w-52 mt-4 h-96 bg-white">
+          <div className="rounded-lg">
+            <img src={urlFor(image[0])} width={250} height={250} />
+          </div>
+
+          <div className="flex flex-col items-start justify-center mt-2 p-2">
             <h1 className=" text-md my-2">{name}</h1>
             <p className="font-bold text-sm text-amber-500">R$ {price}</p>
-            <p className="text-sm mb-2">Em até 12x sem juros</p>
+            <p className="text-sm mb-2 mt-1">Em até 12x sem juros</p>
           </div>
         </div>
       </Link>

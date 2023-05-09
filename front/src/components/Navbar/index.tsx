@@ -13,8 +13,8 @@ function NavBar() {
             <div className="flex items-center justify-between py-3 md:py-5 md:block">
               {/* LOGO */}
               <Link href="/">
-                <h2 className="text-2xl text-cyan-600 font-bold ">
-                  Capuano Music
+                <h2 className="text-2xl text-cyan-400 font-bold ">
+                  CapuanoMusic
                 </h2>
               </Link>
               {/* HAMBURGER BUTTON FOR MOBILE */}
