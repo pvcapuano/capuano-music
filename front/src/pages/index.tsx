@@ -31,9 +31,8 @@ const Home: NextPage<HomeProps> = ({ products }) => {
       <h1>Instrumentos</h1>
 
       <div className="grid gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-5 p-7">
-        {console.log(products)}
         {products?.map((product) => (
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center ">
             <Card key={product._id} product={product} />
           </div>
         ))}

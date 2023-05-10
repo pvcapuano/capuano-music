@@ -28,9 +28,13 @@ const Card = ({
   return (
     <>
       <Link href={`/product/${slug.current}`}>
-        <div className="flex flex-col justify-around border-1 rounded-lg bg-gray-100 shadow-2xl w-52 mt-4 h-96 bg-white">
+        <div className="flex flex-col justify-around border-1 rounded-lg bg-gray-100 shadow-2xl w-52 mt-4 h-96 bg-white transition ease-in duration-200 hover:-translate-y-2">
           <div className="rounded-lg">
-            <img src={urlFor(image[0])} width={250} height={250} />
+            <img
+              src={urlFor(image && image[0]).url()}
+              width={250}
+              height={250}
+            />
           </div>
 
           <div className="flex flex-col items-start justify-center mt-2 p-2">
