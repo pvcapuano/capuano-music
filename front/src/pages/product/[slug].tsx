@@ -18,6 +18,7 @@ interface Product {
   details: string;
   price: number;
   brand: string;
+  model: string;
   image: {
     asset: {
       url: string;
@@ -30,64 +31,82 @@ interface CardProps {
 }
 
 const ProductDetails = ({ product, products }: CardProps) => {
-  const { image, name, details, price } = product;
+  const { image, name, details, price, model, brand } = product;
   const [index, setIndex] = useState(0);
 
   return (
-    <div className="mt-20 text-black">
-      <div>
-        <div>
-          <div>
+    <div className="p-7 mt-20 text-black">
+      <div className="flex flex-col items-center lg:items-start lg:flex-row lg:justify-evenly">
+        <div className="flex flex-col justify-center ">
+          {/* images */}
+          <div className="w-96 h-96">
             <img src={urlFor(image && image[index])} />
           </div>
           {/* small images */}
-          <div>
+          <div className="flex mt-4 w-24 h-24">
             {image?.map((item: string, i: string) => (
               <img src={urlFor(item)} onMouseEnter={() => setIndex(i)} />
             ))}
           </div>
+        </div>
+
+        <div className="flex flex-col">
+          <h1 className="text-3xl font-bold">{name}</h1>
+
+          <div className="flex items-center my-3">
+            <AiFillStar />
+            <AiFillStar />
+            <AiFillStar />
+            <AiFillStar />
+            <AiOutlineStar />
+            <p> (20)</p>
+          </div>
+
+          <div className="my-3">
+            <p className="font-bold text-xs mb-1">
+              Marca: <span className="uppercase font-normal">{brand}</span>
+            </p>
+            <p className="font-bold text-xs mb-1">
+              Modelo: <span className="uppercase font-normal">{model}</span>
+            </p>
+          </div>
+
+          <div className="w-full">
+            <hr></hr>
+            <p className="mt-3">{details}</p>
+          </div>
+
+          <p className="font-bold text-xl text-amber-500 my-3">R$ {price}</p>
 
           <div>
-            <h1> {name}</h1>
-            <div>
-              <div>
-                <AiFillStar />
-                <AiFillStar />
-                <AiFillStar />
-                <AiFillStar />
-                <AiOutlineStar />
-              </div>
-              <p>(20)</p>
-            </div>
-            <h4>Detalhes:</h4>
-            <p>{details}</p>
-            <p>R${price}</p>
+            <h3>Quantidade:</h3>
 
-            <div>
-              <h3>Quantidade:</h3>
-              <p>
-                <span>
-                  <AiOutlineMinus />
-                </span>
-                <span>0</span>
-                <span>
-                  <AiOutlinePlus />
-                </span>
-              </p>
+            <div className="flex items-center my-3 w-36 border-2">
+              <span className="flex justify-center items-center w-12 h-6 bg-slate-200">
+                <AiOutlineMinus />
+              </span>
+              <span className="flex justify-center w-12">0</span>
+              <span className="flex justify-center items-center w-12 h-6 bg-slate-200">
+                <AiOutlinePlus />
+              </span>
             </div>
+          </div>
 
-            <div>
-              <button>Adicionar no Carrinho</button>
-              <button>Comprar</button>
-            </div>
+          <div className="flex flex-col items-start">
+            <button className="w-full uppercase bg-amber-500 text-white rounded-xl p-2 mt-1 mb-3">
+              Adicionar no Carrinho
+            </button>
+            <button className="w-full uppercase bg-black text-white rounded-xl p-2 mb-3">
+              Comprar
+            </button>
           </div>
         </div>
       </div>
 
-      <div>
-        <h2>Você também irá curtir</h2>
+      <div className="flex flex-col items-center">
+        <h2 className="font-bold text-center text-2xl my-10">Recomendados</h2>
         <div>
-          <div>
+          <div className="flex flex-col lg:flex-row">
             {products.map((item) => (
               <Card key={item._id} product={item} />
             ))}
