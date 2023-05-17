@@ -8,6 +8,7 @@ import {
   AiOutlineStar,
 } from "react-icons/ai";
 import Card from "@/components/Card";
+import FreteCalculator from "@/components/FreteCalculator";
 
 interface Product {
   _id: string;
@@ -50,7 +51,7 @@ const ProductDetails = ({ product, products }: CardProps) => {
           </div>
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col w-3/12">
           <h1 className="text-3xl font-bold">{name}</h1>
 
           <div className="flex items-center my-3">
@@ -73,13 +74,14 @@ const ProductDetails = ({ product, products }: CardProps) => {
 
           <div className="w-full">
             <hr></hr>
-            <p className="mt-3">{details}</p>
+            <p className="my-3">{details}</p>
+            <hr></hr>
           </div>
 
           <p className="font-bold text-xl text-amber-500 my-3">R$ {price}</p>
 
-          <div>
-            <h3>Quantidade:</h3>
+          <div className="flex items-center">
+            <h3 className="font-bold mr-3 text-md">Quantidade:</h3>
 
             <div className="flex items-center my-3 w-36 border-2">
               <span className="flex justify-center items-center w-12 h-6 bg-slate-200">
@@ -92,11 +94,17 @@ const ProductDetails = ({ product, products }: CardProps) => {
             </div>
           </div>
 
+          <div className="w-full my-3">
+            <hr></hr>
+            <FreteCalculator />
+            <hr></hr>
+          </div>
+
           <div className="flex flex-col items-start">
-            <button className="w-full uppercase bg-amber-500 text-white rounded-xl p-2 mt-1 mb-3">
+            <button className="w-full uppercase bg-amber-500 hover:bg-slate-400 text-white rounded-xl p-2 mt-1 mb-3">
               Adicionar no Carrinho
             </button>
-            <button className="w-full uppercase bg-black text-white rounded-xl p-2 mb-3">
+            <button className="w-full uppercase bg-black hover:bg-slate-400 text-white rounded-xl p-2 mb-3">
               Comprar
             </button>
           </div>
