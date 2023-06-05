@@ -7,8 +7,9 @@ import {
   AiFillStar,
   AiOutlineStar,
 } from "react-icons/ai";
-import Card from "@/components/Card";
 import FreteCalculator from "@/components/FreteCalculator";
+import { useStateContext } from "../../../context/StateContext";
+import Card from "@/components/Card";
 
 interface Product {
   _id: string;
@@ -34,6 +35,7 @@ interface CardProps {
 const ProductDetails = ({ product, products }: CardProps) => {
   const { image, name, details, price, model, brand } = product;
   const [index, setIndex] = useState(0);
+  const { decQty, incQty, qty, onAdd } = useStateContext();
 
   return (
     <div className="p-7 mt-20 text-black">
@@ -84,11 +86,17 @@ const ProductDetails = ({ product, products }: CardProps) => {
             <h3 className="font-bold mr-3 text-md">Quantidade:</h3>
 
             <div className="flex items-center my-3 w-36 border-2">
-              <span className="flex justify-center items-center w-12 h-6 bg-slate-200">
+              <span
+                className="flex justify-center items-center w-12 h-6 bg-slate-200"
+                onClick={decQty}
+              >
                 <AiOutlineMinus />
               </span>
-              <span className="flex justify-center w-12">0</span>
-              <span className="flex justify-center items-center w-12 h-6 bg-slate-200">
+              <span className="flex justify-center w-12">{qty}</span>
+              <span
+                className="flex justify-center items-center w-12 h-6 bg-slate-200"
+                onClick={incQty}
+              >
                 <AiOutlinePlus />
               </span>
             </div>
@@ -101,7 +109,10 @@ const ProductDetails = ({ product, products }: CardProps) => {
           </div>
 
           <div className="flex flex-col items-start">
-            <button className="w-full uppercase bg-amber-500 hover:bg-slate-400 text-white rounded-xl p-2 mt-1 mb-3">
+            <button
+              className="w-full uppercase bg-amber-500 hover:bg-slate-400 text-white rounded-xl p-2 mt-1 mb-3"
+              onClick={() => onAdd(product, qty)}
+            >
               Adicionar no Carrinho
             </button>
             <button className="w-full uppercase bg-black hover:bg-slate-400 text-white rounded-xl p-2 mb-3">
