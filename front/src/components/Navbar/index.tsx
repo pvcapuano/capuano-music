@@ -1,9 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { IoCloseSharp, IoMenu, IoCart } from "react-icons/io5";
 import { useStateContext } from "../../../context/StateContext";
-
+import Cart from "../Cart";
 interface StateContextType {
   showCart: boolean;
   setShowCart: (value: boolean) => void;
@@ -50,7 +49,7 @@ function NavBar() {
                 navbar ? "p-12 md:p-0 block" : "hidden"
               }`}
             >
-              <ul className="h-screen md:h-auto items-center justify-center md:flex ">
+              <ul className="h-screen md:h-auto items-center justify-center md:flex">
                 <li className=" text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-cyan-600  border-cyan-600  md:hover:text-cyan-600 md:hover:bg-transparent">
                   <Link href="/blog" onClick={() => setNavbar(!navbar)}>
                     Blog
@@ -61,17 +60,18 @@ function NavBar() {
                     Sobre
                   </Link>
                 </li>
-                <button
-                  className="relative cursor-pointer "
-                  onClick={() => setShowCart(true)}
-                >
-                  <Link href="/cart" onClick={() => setNavbar(!navbar)}>
+                <li className="md:flex text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-cyan-600  border-cyan-600  md:hover:text-cyan-600 md:hover:bg-transparent">
+                  <button
+                    className="relative cursor-pointer "
+                    onClick={() => setShowCart(true)}
+                  >
                     <IoCart size={25} color="white" />
                     <span className="absolute bg-red-500 -right-4 -top-1 text-white text-center rounded-full w-4 h-4 text-xs">
                       {totalQuantities}
                     </span>
-                  </Link>
-                </button>
+                  </button>
+                </li>
+                {showCart && <Cart />}
               </ul>
             </div>
           </div>

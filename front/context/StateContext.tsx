@@ -30,7 +30,7 @@ const StateContext = ({ children }: StateContextProps) => {
   const [showCart, setShowCart] = useState(false);
   const [cartItems, setCarItems] = useState<Product[]>([]);
   const [totalPrice, setTotalPrice] = useState<number | null>(null);
-  const [totalQuantities, setTotalQuantities] = useState(1);
+  const [totalQuantities, setTotalQuantities] = useState(0);
   const [qty, setQty] = useState(1);
 
   const onAdd = (product: Product, quantity: number) => {
