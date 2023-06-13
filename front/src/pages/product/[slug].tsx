@@ -26,10 +26,12 @@ interface Product {
       url: string;
     }[];
   };
+  quantity: number;
 }
 
 interface CardProps {
   product: Product;
+  products: Product[];
 }
 
 const ProductDetails = ({ product, products }: CardProps) => {
@@ -43,13 +45,22 @@ const ProductDetails = ({ product, products }: CardProps) => {
         <div className="flex flex-col justify-center ">
           {/* images */}
           <div className="w-96 h-96">
-            <img src={urlFor(image && image[index])} />
+            {Array.isArray(image) &&
+              image.length > 0 &&
+              index < image.length && (
+                <img src={urlFor(image && image[index]).url()} />
+              )}
           </div>
           {/* small images */}
           <div className="flex mt-4 w-24 h-24">
-            {image?.map((item: string, i: string) => (
-              <img src={urlFor(item)} onMouseEnter={() => setIndex(i)} />
-            ))}
+            {Array.isArray(image) &&
+              image?.map((item: { asset: { url: string } }[], i: number) => (
+                <img
+                  key={i}
+                  src={urlFor(item).url()}
+                  onMouseEnter={() => setIndex(i)}
+                />
+              ))}
           </div>
         </div>
 
@@ -157,7 +168,14 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params: { slug } }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const slug = params?.slug as string;
+
+  if (!slug) {
+    return {
+      notFound: true,
+    };
+  }
   const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
   const productsQuery = '*[_type == "product"]';
 

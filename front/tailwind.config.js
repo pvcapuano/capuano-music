@@ -13,6 +13,9 @@ module.exports = {
       backgroundImage: {
         hero: "url('https://cdn.shopify.com/s/files/1/0467/5049/8975/files/FCSWALLweb.jpg?v=1635672462&width=1100')",
       },
+      zIndex: {
+        100: "100",
+      },
     },
   },
   plugins: [],
