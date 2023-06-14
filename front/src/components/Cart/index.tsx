@@ -81,33 +81,37 @@ const Cart = () => {
         <div className="mt-10">
           {cartItems.length >= 1 &&
             cartItems.map((item) => (
-              <div className="px-5 py-3" key={item._id}>
+              <div className="px-5 py-3 flex" key={item._id}>
                 <img
                   src={urlFor(item?.image[0]).url()}
                   alt={item.name}
                   className="w-1/4 h-1/4"
                 />
-                <div className="w-42">
-                  <div className="flex flex-wrap gap-10">
-                    <h5 className="text-base text-blue-900">{item.name}</h5>
-                    <h4 className="text-base text-black">${item.price}</h4>
+                <div className="w-full">
+                  <div className="flex flex-wrap justify-between ">
+                    <h5 className="text-base text-blue-900 font-bold">
+                      {item.name}
+                    </h5>
+                    <h4 className="text-base">R$ {item.price}</h4>
                   </div>
-                  <div className="flex items-center justify-between mt-2">
-                    <div className="flex items-center gap-2">
+                  <div className="flex items-center justify-between mt-2 ">
+                    <div className="flex items-center border border-gray-300 gap-2">
                       <button
                         type="button"
-                        className="cursor-pointer text-red-500"
+                        className="cursor-pointer text-red-500  border-gray-300 border-r-2 w-6 h-6 flex justify-center items-center"
                         onClick={() => toggleCartItemQuanitity(item._id, "dec")}
                       >
-                        <AiOutlineMinus className="text-xl" />
+                        <AiOutlineMinus />
                       </button>
-                      <span className="text-base">{item.quantity}</span>
+                      <span className="w-8 h-6 text-center">
+                        {item.quantity}
+                      </span>
                       <button
                         type="button"
-                        className="cursor-pointer text-green-500"
+                        className="cursor-pointer text-green-500  border-gray-300 border-l-2 w-6 h-6 flex justify-center items-center"
                         onClick={() => toggleCartItemQuanitity(item._id, "inc")}
                       >
-                        <AiOutlinePlus className="text-base" />
+                        <AiOutlinePlus />
                       </button>
                     </div>
                     <button
@@ -124,15 +128,15 @@ const Cart = () => {
         </div>
 
         {cartItems.length >= 1 && (
-          <div className="p-8">
-            <div className="flex justify-between">
-              <h3 className="text-base">Subtotal:</h3>
+          <div className="flex flex-wrap justify-between">
+            <div className="w-full flex  justify-between p-5">
+              <h3 className="text-base font-bold">Subtotal:</h3>
               <h3 className="text-base">${totalPrice}</h3>
             </div>
             <div className="w-full mx-auto">
               <button
                 type="button"
-                className="w-full max-w-96 px-3 py-2 rounded-2xl border-none text-base mt-4 bg-red-500 text-white cursor-pointer transform transition-transform duration-500 hover:scale-110"
+                className="w-full max-w-96 px-3 py-2 rounded-2xl border-none text-base mt-4 bg-red-500 text-white cursor-pointer transform transition-transform duration-500 hover:bg-red-800"
                 onClick={handleCheckout}
               >
                 Pagar

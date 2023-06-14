@@ -19,19 +19,27 @@ interface StateContextValues {
   totalPrice: number | null;
   totalQuantities: number;
   qty: number;
+  toggleCartItemQuanitity: (id: string, value: string) => void;
   incQty: () => void;
   decQty: () => void;
   onAdd: (product: Product, quantity: number) => void;
+  onRemove: (product: Product) => void;
+  setCartItems: (items: Product[]) => void;
+  setTotalPrice: (price: number | null) => void;
+  setTotalQuantities: (quantities: number) => void;
 }
 
 const Context = createContext<StateContextValues | undefined>(undefined);
 
 const StateContext = ({ children }: StateContextProps) => {
   const [showCart, setShowCart] = useState(false);
-  const [cartItems, setCarItems] = useState<Product[]>([]);
-  const [totalPrice, setTotalPrice] = useState<number | null>(null);
+  const [cartItems, setCartItems] = useState<Product[]>([]);
+  const [totalPrice, setTotalPrice] = useState<number | null>(0);
   const [totalQuantities, setTotalQuantities] = useState(0);
   const [qty, setQty] = useState(1);
+
+  let foundProduct: any;
+  let index: number;
 
   const onAdd = (product: Product, quantity: number) => {
     const checkProductInCart = cartItems.find(
@@ -54,13 +62,56 @@ const StateContext = ({ children }: StateContextProps) => {
         return cartProduct;
       });
 
-      setCarItems(updatedCartItems);
+      setCartItems(updatedCartItems);
     } else {
       product.quantity = quantity;
 
-      setCarItems([...cartItems, { ...product }]);
+      setCartItems([...cartItems, { ...product }]);
     }
     toast.success(`${qty} ${product.name} adicionado no carrinho.`);
+  };
+
+  const onRemove = (product: Product) => {
+    foundProduct = cartItems.find((item) => item._id === product._id);
+    const newCartItems = cartItems.filter((item) => item._id !== product._id);
+
+    setTotalPrice((prevTotalPrice) => {
+      const totalPrice = prevTotalPrice ?? 0;
+      return totalPrice - foundProduct.price * foundProduct.quantity;
+    });
+    setTotalQuantities(
+      (prevTotalQuantities) => prevTotalQuantities - foundProduct.quantity
+    );
+    setCartItems(newCartItems);
+  };
+  const toggleCartItemQuanitity = (id: any, value: any) => {
+    foundProduct = cartItems.find((item) => item._id === id);
+    index = cartItems.findIndex((product) => product._id === id);
+    const newCartItems = cartItems.filter((item) => item._id !== id);
+
+    if (value === "inc") {
+      setCartItems([
+        ...newCartItems,
+        { ...foundProduct, quantity: foundProduct.quantity + 1 },
+      ]);
+      setTotalPrice((prevTotalPrice) => {
+        const newTotal = prevTotalPrice + foundProduct.price;
+        return Number(newTotal.toFixed(4));
+      });
+      setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
+    } else if (value === "dec") {
+      if (foundProduct.quantity > 1) {
+        setCartItems([
+          ...newCartItems,
+          { ...foundProduct, quantity: foundProduct.quantity - 1 },
+        ]);
+        setTotalPrice((prevTotalPrice) => {
+          const newTotal = prevTotalPrice - foundProduct.price;
+          return Number(newTotal.toFixed(4));
+        });
+        setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1);
+      }
+    }
   };
 
   const incQty = () => {
@@ -75,20 +126,27 @@ const StateContext = ({ children }: StateContextProps) => {
     });
   };
 
-  const stateContextValues: StateContextValues = {
-    showCart,
-    setShowCart,
-    cartItems,
-    totalPrice,
-    totalQuantities,
-    qty,
-    incQty,
-    decQty,
-    onAdd,
-  };
-
   return (
-    <Context.Provider value={stateContextValues}>{children}</Context.Provider>
+    <Context.Provider
+      value={{
+        showCart,
+        setShowCart,
+        cartItems,
+        totalPrice,
+        totalQuantities,
+        qty,
+        incQty,
+        decQty,
+        onAdd,
+        toggleCartItemQuanitity,
+        onRemove,
+        setCartItems,
+        setTotalPrice,
+        setTotalQuantities,
+      }}
+    >
+      {children}
+    </Context.Provider>
   );
 };
 
