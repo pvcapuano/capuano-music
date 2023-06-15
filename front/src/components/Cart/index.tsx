@@ -56,7 +56,7 @@ const Cart = () => {
           onClick={() => setShowCart(false)}
         >
           <AiOutlineLeft />
-          <span className="ml-2">Your Cart</span>
+          <span className="ml-2">Carrinho</span>
           <span className="ml-2 text-red-500">({totalQuantities} items)</span>
         </button>
 
@@ -129,9 +129,20 @@ const Cart = () => {
 
         {cartItems.length >= 1 && (
           <div className="flex flex-wrap justify-between">
+            <div className="w-full my-1">
+              <hr></hr>
+            </div>
+            <div className="w-full flex  justify-between p-5">
+              <h3 className="text-base font-bold">Frete:</h3>
+              <h3 className="text-base">R$ 20</h3>
+            </div>
+            <div className="w-full my-1">
+              <hr></hr>
+            </div>
+
             <div className="w-full flex  justify-between p-5">
               <h3 className="text-base font-bold">Subtotal:</h3>
-              <h3 className="text-base">${totalPrice}</h3>
+              <h3 className="text-base">R$ {(totalPrice + 0.02).toFixed(3)}</h3>
             </div>
             <div className="w-full mx-auto">
               <button
