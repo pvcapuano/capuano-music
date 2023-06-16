@@ -35,11 +35,13 @@ const Cart = () => {
       body: JSON.stringify(cartItems),
     });
 
-    if (response.statusCode === 500) return;
+    if (response.status === 500) return;
 
     const data = await response.json();
 
-    toast.loading("Redirecting...");
+    toast.loading("Redirecionando...");
+
+    console.log(data.id);
 
     stripe.redirectToCheckout({ sessionId: data.id });
   };
@@ -132,17 +134,10 @@ const Cart = () => {
             <div className="w-full my-1">
               <hr></hr>
             </div>
-            <div className="w-full flex  justify-between p-5">
-              <h3 className="text-base font-bold">Frete:</h3>
-              <h3 className="text-base">R$ 20</h3>
-            </div>
-            <div className="w-full my-1">
-              <hr></hr>
-            </div>
 
             <div className="w-full flex  justify-between p-5">
               <h3 className="text-base font-bold">Subtotal:</h3>
-              <h3 className="text-base">R$ {(totalPrice + 0.02).toFixed(3)}</h3>
+              <h3 className="text-base">R$ {totalPrice}</h3>
             </div>
             <div className="w-full mx-auto">
               <button

@@ -57,7 +57,7 @@ const FreteCalculator: React.FC<FreteCalculatorProps> = () => {
             </thead>
             <tbody>
               <tr>
-                <td className="p-1">4 dias úteis</td>
+                <td className="p-1">Frete grátis</td>
                 <td className="p-1">{frete}</td>
               </tr>
             </tbody>
