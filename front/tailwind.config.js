@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        hero: "url('https://cdn.shopify.com/s/files/1/0467/5049/8975/files/FCSWALLweb.jpg?v=1635672462&width=1100')",
+        hero: "url('https://stuff.fendergarage.com/images/g/6/2/Web_Squier_0425_23_NPI_Squier_Sonic_Series_Launch_HPS_DESKTOP.jpg')",
       },
       zIndex: {
         100: "100",

@@ -26,10 +26,10 @@ interface HomeProps {
 
 const Home: NextPage<HomeProps> = ({ products }) => {
   return (
-    <div className="">
+    <div className="flex flex-col justify-center items-center p-2">
       <Banner />
 
-      <div className="grid gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-5 p-7">
+      <div className="grid gap-8 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 p-7">
         {products?.map((product) => (
           <div className="flex justify-center items-center ">
             <Card key={product._id} product={product} />
