@@ -26,9 +26,8 @@ interface HomeProps {
 
 const Home: NextPage<HomeProps> = ({ products }) => {
   return (
-    <div>
+    <div className="">
       <Banner />
-      <h1>Instrumentos</h1>
 
       <div className="grid gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-5 p-7">
         {products?.map((product) => (
