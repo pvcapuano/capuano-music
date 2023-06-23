@@ -136,8 +136,8 @@ const ProductDetails = ({ product, products }: CardProps) => {
 
       <div className="flex flex-col items-center">
         <h2 className="font-bold text-center text-2xl my-10">Recomendados</h2>
-        <div>
-          <div className="flex flex-col lg:flex-row">
+        <div className="marquee">
+          <div className="maylike-products-container track">
             {products.map((item) => (
               <Card key={item._id} product={item} />
             ))}
