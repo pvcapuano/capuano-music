@@ -40,11 +40,11 @@ const ProductDetails = ({ product, products }: CardProps) => {
   const { decQty, incQty, qty, onAdd } = useStateContext();
 
   return (
-    <div className="p-7 mt-20 text-black">
-      <div className="flex flex-col items-center lg:items-start lg:flex-row lg:justify-evenly">
-        <div className="flex flex-col justify-center ">
+    <div className="p-7 text-black">
+      <div className="flex flex-col items-center lg:items-start lg:flex-row lg:justify-evenly mt-20">
+        <div className="flex flex-col justify-center shadow-xl">
           {/* images */}
-          <div className="w-96 h-96">
+          <div className="w-64 h-64 md:w-96 md:h-96">
             {Array.isArray(image) &&
               image.length > 0 &&
               index < image.length && (
@@ -52,19 +52,20 @@ const ProductDetails = ({ product, products }: CardProps) => {
               )}
           </div>
           {/* small images */}
-          <div className="flex mt-4 w-24 h-24">
+          <div className="flex items-center justify-center mt-2 md:mt-3">
             {Array.isArray(image) &&
               image?.map((item: { asset: { url: string } }[], i: number) => (
                 <img
                   key={i}
                   src={urlFor(item).url()}
                   onMouseEnter={() => setIndex(i)}
+                  className="border-2 border-gray-200 h-16 w-16 md:w-24 md:h-24"
                 />
               ))}
           </div>
         </div>
 
-        <div className="flex flex-col w-3/12">
+        <div className="flex flex-col w-3/4 md:w-2/4 lg:w-3/12 m-4 lg:mt-0">
           <h1 className="text-3xl font-bold">{name}</h1>
 
           <div className="flex items-center my-3">

@@ -16,7 +16,7 @@ const FreteCalculator: React.FC<FreteCalculatorProps> = () => {
     const regex = /^[0-9]{5}-[0-9]{3}$/;
 
     if (regex.test(cep)) {
-      setFrete("R$ 20,00");
+      setFrete("R$ 50,00");
     } else {
       setCepValido(false);
     }
@@ -35,10 +35,10 @@ const FreteCalculator: React.FC<FreteCalculatorProps> = () => {
           value={cep}
           onChange={handleCepChange}
           placeholder="00000-000"
-          className="border-2 w-2/5"
+          className="border-2 w-3/5 md:w-2/5 p-2"
         />
         <button
-          className="bg-slate-400 hover:bg-amber-500 rounded-lg text-white rounded-xl uppercase p-2 w-2/5"
+          className="bg-slate-400 hover:bg-amber-500 rounded-lg text-white rounded-xl uppercase p-2 md:w-2/5"
           onClick={handleCalcularClick}
         >
           Calcular
@@ -57,8 +57,12 @@ const FreteCalculator: React.FC<FreteCalculatorProps> = () => {
             </thead>
             <tbody>
               <tr>
-                <td className="p-1">Frete grátis</td>
+                <td className="p-1">2 a 3 dias</td>
                 <td className="p-1">{frete}</td>
+              </tr>
+              <tr>
+                <td className="p-1">5 a 10 dias</td>
+                <td className="p-1">Grátis</td>
               </tr>
             </tbody>
           </table>
