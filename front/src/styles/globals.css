@@ -30,14 +30,14 @@
   position: relative;
   height: 400px;
   width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .track {
   position: absolute;
   white-space: nowrap;
   will-change: transform;
-  animation: marquee 10s infinite;
+  animation: marquee 15s linear infinite;
   width: 180%;
 }
 .track:hover {
