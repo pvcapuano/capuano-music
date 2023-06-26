@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { ReactNode } from "react";
 
@@ -10,6 +11,7 @@ const Layout = ({ children }: LayoutProps) => {
     <>
       <Navbar />
       <main className="bg-gray-100">{children}</main>
+      <Footer />
     </>
   );
 };
