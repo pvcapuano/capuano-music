@@ -59,11 +59,6 @@ function NavBar() {
                     Blog
                   </Link>
                 </li>
-                <li className=" text-xl text-black font-bold py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-blue-500  border-blue-500  md:hover:text-blue-800 md:hover:bg-transparent">
-                  <Link href="/about" onClick={() => setNavbar(!navbar)}>
-                    Sobre
-                  </Link>
-                </li>
                 <li className="md:flex text-xl text-black  py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-blue-500  border-blue-500  md:hover:text-blue-800 md:hover:bg-transparent">
                   <button
                     className="relative cursor-pointer "

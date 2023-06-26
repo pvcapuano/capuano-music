@@ -37,7 +37,13 @@ interface CardProps {
 const ProductDetails = ({ product, products }: CardProps) => {
   const { image, name, details, price, model, brand } = product;
   const [index, setIndex] = useState(0);
-  const { decQty, incQty, qty, onAdd } = useStateContext();
+  const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
+
+  const handleBuyNow = () => {
+    onAdd(product, qty);
+
+    setShowCart(true);
+  };
 
   return (
     <div className="p-7 text-black">
@@ -127,15 +133,18 @@ const ProductDetails = ({ product, products }: CardProps) => {
             >
               Adicionar no Carrinho
             </button>
-            <button className="w-full uppercase bg-black hover:bg-slate-400 text-white rounded-xl p-2 mb-3">
+            <button
+              onClick={handleBuyNow}
+              className="w-full uppercase bg-black hover:bg-slate-400 text-white rounded-xl p-2 mb-3"
+            >
               Comprar
             </button>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col items-center">
-        <h2 className="font-bold text-center text-2xl my-10">Recomendados</h2>
+      <div className="flex flex-col items-center mb-10">
+        <h2 className="font-bold text-center text-2xl my-2">Recomendados</h2>
         <div className="marquee">
           <div className="maylike-products-container track">
             {products.map((item) => (

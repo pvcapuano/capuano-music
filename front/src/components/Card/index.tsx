@@ -14,8 +14,8 @@ interface Product {
   image: {
     asset: {
       url: string;
-    }[];
-  };
+    };
+  }[];
 }
 
 interface CardProps {

@@ -14,7 +14,7 @@ import { useStateContext } from "../../../context/StateContext";
 import { urlFor } from "../../../lib/client";
 
 const Cart = () => {
-  const cartRef = useRef();
+  const cartRef = useRef<HTMLDivElement>(null);
   const {
     totalPrice,
     totalQuantities,
