@@ -1,41 +1,54 @@
+import Banner from "@/components/Banner";
+import { NextPage } from "next";
 import { useEffect, useState } from "react";
+import { client } from "../../lib/client";
+import Card from "@/components/Card";
+import { GetServerSideProps } from "next";
 
-interface Instrumento {
-  id: number;
-  title: string;
+interface Product {
+  _id: string;
+  name: string;
+  slug: {
+    current: string;
+  };
+  details: string;
   price: number;
-  model: string;
-  category: string;
-  photo?: File;
   brand: string;
+  image: {
+    asset: {
+      url: string;
+    }[];
+  };
+}
+interface HomeProps {
+  products: Product[];
 }
 
-export default function Home() {
-  const [instrumentos, setInstrumentos] = useState<Instrumento[]>([]);
-
-  useEffect(() => {
-    async function fetchInstrumentos() {
-      const response = await fetch("http://localhost:1337/api/instrumentos");
-      const data = await response.json();
-      console.log(data.data);
-      setInstrumentos(data.data);
-    }
-    fetchInstrumentos();
-  }, []);
-
+const Home: NextPage<HomeProps> = ({ products }) => {
   return (
-    <div>
-      <h1>Instrumentos</h1>
+    <div className="flex flex-col justify-center items-center p-2">
+      <Banner />
 
-      {instrumentos.map((instrumento) => (
-        <div key={instrumento.id}>
-          <h1>{instrumento.attributes.title} - </h1>
-          <span>{instrumento.attributes.category}</span>
-          <p> {instrumento.attributes.description}</p>
-          <p>R$ {instrumento.attributes.price}</p>
-          <img src="http://localhost:1337/uploads/guitarra_fender_squier_standard_telecaster_vintage_blonde_a6f85ff87a.jpg"></img>
-        </div>
-      ))}
+      <div className="grid gap-8 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 p-7">
+        {products?.map((product) => (
+          <div className="flex justify-center items-center ">
+            <Card key={product._id} product={product} />
+          </div>
+        ))}
+      </div>
     </div>
   );
-}
+};
+
+export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
+  const query = '*[_type == "product"]';
+  const products = await client.fetch(query);
+
+  return {
+    props: {
+      products,
+    },
+  };
+};
+
+export default Home;
