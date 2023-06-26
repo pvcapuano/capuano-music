@@ -106,7 +106,7 @@ const StateContext = ({ children }: StateContextProps) => {
           ...newCartItems,
           { ...foundProduct, quantity: foundProduct.quantity - 1 },
         ]);
-        setTotalPrice((prevTotalPrice) => {
+        setTotalPrice((prevTotalPrice: any) => {
           const newTotal = prevTotalPrice - foundProduct.price;
           return Number(newTotal.toFixed(4));
         });
