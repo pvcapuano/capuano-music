@@ -22,9 +22,7 @@ interface CardProps {
   product: Product;
 }
 
-const Card = ({
-  product: { name, slug, details, price, brand, image },
-}: CardProps) => {
+const Card = ({ product: { name, slug, price, image } }: CardProps) => {
   return (
     <>
       <Link href={`/product/${slug.current}`}>

@@ -54,4 +54,39 @@ export const schemaTypes = [
       },
     ],
   },
+  {
+    name: 'blog',
+    title: 'Blog',
+    type: 'document',
+    fields: [
+      {
+        name: 'title',
+        title: 'Title',
+        type: 'string',
+      },
+      {
+        name: 'slug',
+        title: 'Slug',
+        type: 'slug',
+        options: {
+          source: 'title',
+          maxLength: 90,
+        },
+      },
+      {
+        title: 'Release date',
+        name: 'releaseDate',
+        type: 'date',
+        options: {
+          dateFormat: 'DD-MM-YYYY',
+          calendarTodayLabel: 'Today',
+        },
+      },
+      {
+        name: 'description',
+        title: 'Description',
+        type: 'text',
+      },
+    ],
+  },
 ]

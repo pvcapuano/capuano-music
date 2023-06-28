@@ -11,7 +11,12 @@ import FreteCalculator from "@/components/FreteCalculator";
 import { useStateContext } from "../../../context/StateContext";
 import Card from "@/components/Card";
 
-interface Product {
+interface Image {
+  asset: {
+    url: string;
+  };
+}
+interface ProductData {
   _id: string;
   name: string;
   slug: {
@@ -21,17 +26,13 @@ interface Product {
   price: number;
   brand: string;
   model: string;
-  image: {
-    asset: {
-      url: string;
-    }[];
-  };
+  image: Image[];
   quantity: number;
 }
 
 interface CardProps {
-  product: Product;
-  products: Product[];
+  product: ProductData;
+  products: ProductData[];
 }
 
 const ProductDetails = ({ product, products }: CardProps) => {
@@ -60,10 +61,10 @@ const ProductDetails = ({ product, products }: CardProps) => {
           {/* small images */}
           <div className="flex items-center justify-center mt-2 md:mt-3">
             {Array.isArray(image) &&
-              image?.map((item: { asset: { url: string } }[], i: number) => (
+              image.map((item: Image, i: number) => (
                 <img
                   key={i}
-                  src={urlFor(item).url()}
+                  src={urlFor(item.asset).url()}
                   onMouseEnter={() => setIndex(i)}
                   className="border-2 border-gray-200 h-16 w-16 md:w-24 md:h-24"
                 />
