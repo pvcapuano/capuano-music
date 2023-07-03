@@ -80,7 +80,11 @@ yarn dev
 
 ## Atividades realizadas:
 
-- A escolha do Next.js como framework principal para o desenvolvimento da aplicação web, proporcionando uma base sólida e eficiente para a construção do projeto.
-- A implementação do Tailwind CSS como biblioteca de estilos, permitindo uma abordagem simplificada e eficaz para o desenvolvimento e estilização dos componentes da aplicação.
-- A utilização do Sanity como CMS, oferecendo praticidade para o cadastro de novos produtos.
-- A integração com o Stripe para o pagamento.
+- O projeto foi desenvolvido utilizando o framework Next.js, que oferece uma base sólida e eficiente para a construção da aplicação web. Sua capacidade de renderização do lado do servidor resulta em um carregamento rápido e uma navegação suave para os usuários.
+- Para estilizar os componentes da aplicação, foi utilizada a biblioteca Tailwind CSS. Essa escolha permitiu uma abordagem simplificada e eficaz no desenvolvimento e estilização dos elementos visuais, proporcionando uma aparência consistente e facilitando a manutenção do código.
+- O Sanity foi adotado como CMS (Content Management System), responsável pelo gerenciamento de conteúdo da aplicação. Ele oferece praticidade e flexibilidade para o cadastro de novos produtos na loja, permitindo que os administradores adicionem, editem e excluam produtos de forma fácil e intuitiva.
+- O projeto conta com a integração do Stripe, uma API de pagamento amplamente utilizada e confiável. Essa integração permite que os usuários concluam suas compras de forma segura e conveniente, com diferentes opções de pagamento disponíveis. O Stripe garante a proteção dos dados sensíveis durante o processo de transação.
+
+## Conclusão:
+
+A escolha do Next.js, Tailwind CSS, Sanity e Stripe para o desenvolvimento da aplicação de loja de instrumentos musicais resultou em uma solução completa e poderosa. Essas tecnologias combinadas proporcionam uma experiência sólida, eficiente e amigável aos usuários, com um desempenho rápido, estilização simplificada, gerenciamento intuitivo de conteúdo e integração segura para pagamentos. A aplicação destaca-se pela sua funcionalidade, desempenho e usabilidade, garantindo uma experiência positiva em todos os aspectos da jornada do usuário.
