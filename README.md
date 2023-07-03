@@ -1,8 +1,12 @@
 # Projeto:
 
-O projeto consiste em uma aplicação web de uma loja de instrumentos. O usuário tem na tela principal todos os produtos listados. Ele também consegue ver os detalhes dos itens desejados. O usuário pode adicionar e remover itens do carrinho. O site contém uma sessão de blog, onde são feitas publicações a respeito dos instrumentos. 
+O projeto é uma aplicação web de uma loja de instrumentos musicais. Os usuários têm acesso a uma tela principal onde podem visualizar todos os produtos disponíveis para compra. Além disso, eles têm a opção de ver os detalhes de cada item antes de fazer uma decisão de compra.
 
-Após finalizar a compra, o usuário é direcionado para o Stripe. O Stripe é uma API de pagamento. 
+A aplicação também inclui uma seção de blog, onde são publicados artigos relacionados a instrumentos musicais, como dicas de uso, curiosidades e reviews. Os usuários podem ler os artigos e se manterem atualizados com as últimas notícias do mundo da música.
+
+Uma das principais funcionalidades da aplicação é o carrinho de compras. Os usuários podem adicionar produtos ao carrinho, ajustar as quantidades e remover itens conforme desejado. Ao finalizar a compra, eles são redirecionados para o Stripe, uma plataforma de pagamento online segura e confiável.
+
+O projeto também inclui recursos de administração, onde é possível cadastrar novos produtos e criar publicações para o blog. Isso é feito por meio da integração com o Sanity, um sistema de gerenciamento de conteúdo flexível e fácil de usar.
 
 
 
