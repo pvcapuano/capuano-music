@@ -1,8 +1,10 @@
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY || "", {
+  apiVersion: "2020-08-27",
+});
 
-export default async function handler(req, res) {
+export default async function handler(req: any, res: any) {
   if (req.method === "POST") {
     try {
       const params = {
@@ -14,7 +16,7 @@ export default async function handler(req, res) {
           { shipping_rate: "shr_1NJkZiDRubp9Ec6zfDkeM3o2" },
           { shipping_rate: "shr_1NJkaDDRubp9Ec6zfYtek40e" },
         ],
-        line_items: req.body.map((item) => {
+        line_items: req.body.map((item: any) => {
           const img = item.image[0].asset._ref;
           const newImage = img
             .replace(
@@ -40,7 +42,7 @@ export default async function handler(req, res) {
           };
         }),
         success_url: `${req.headers.origin}/success`,
-        cancel_url: `${req.headers.origin}/canceled`,
+        cancel_url: `${req.headers.origin}/`,
       };
 
       // Create Checkout Sessions from body params.
