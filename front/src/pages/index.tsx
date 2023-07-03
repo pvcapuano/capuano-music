@@ -17,9 +17,10 @@ interface Product {
   image: {
     asset: {
       url: string;
-    }[];
-  };
+    };
+  }[];
 }
+
 interface HomeProps {
   products: Product[];
 }
@@ -42,7 +43,7 @@ const Home: NextPage<HomeProps> = ({ products }) => {
 
 export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
   const query = '*[_type == "product"]';
-  const products = await client.fetch(query);
+  const products = await client.fetch<Product[]>(query);
 
   return {
     props: {
