@@ -73,6 +73,7 @@ yarn dev
 - NextJs
 - React Hooks
 - Context
+- Regex
 - Tailwind
 - Toastify
 - Stripe
